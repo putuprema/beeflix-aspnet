@@ -1,0 +1,62 @@
+﻿@model BeeFlix.Models.MovieDetailViewModel
+@{
+    ViewData["Title"] = Model.Movie.Title;
+}
+
+<section class="movie-details">
+    <div class="container">
+        <a role="button" class="btn btn-secondary mb-3" asp-action="Index">View All Movies</a>
+        <div class="movie-details-container">
+            <div class="header">
+                <div class="movie-thumb" title="@Model.Movie.Title">
+                    <img src="@Model.Movie.Photo" alt="@Model.Movie.Title" height="100%" />
+                </div>
+                <div class="movie-info">
+                    <h1 class="title"><strong>@Html.DisplayFor(model => model.Movie.Title)</strong></h1>
+                    <p class="description">@Html.DisplayFor(model => model.Movie.Description)</p>
+                    <p class="genre mb-0">
+                        Genre: 
+                        <a asp-action="ByGenre" asp-route-id="@Model.Movie.Genre.Id">@Html.DisplayFor(model => model.Movie.Genre.Name)</a>
+                    </p>
+                </div>
+            </div>
+            <div class="episodes">
+                @{
+                    if (Model.Episodes.Count == 0)
+                    {
+                        <h3><strong>This movie has no episode</strong></h3>
+                    }
+                    else
+                    {
+                        <h3 class="mb-2"><strong>Episodes</strong></h3>
+
+                        foreach (var ep in Model.Episodes)
+                        {
+                            <div class="episode">
+                                <div class="number">@Html.DisplayFor(model => ep.Order)</div>
+                                <h5 class="mb-0">@Html.DisplayFor(model => ep.Title)</h5>
+                            </div>
+                        }
+
+                        <div class="mt-4">
+                            @{ 
+                                var prevBtnDisabled = !Model.Episodes.HasPreviousPage ? "disabled" : "";
+                                var nextBtnDisabled = !Model.Episodes.HasNextPage ? "disabled" : "";
+                            }
+
+                            <a asp-action="Details" asp-route-id="@Model.Movie.Id" asp-route-episodePage="@(Model.Episodes.PageIndex - 1)"
+                               class="btn btn-light @prevBtnDisabled">
+                                Previous
+                            </a>
+                            <a asp-action="Details" asp-route-id="@Model.Movie.Id" asp-route-episodePage="@(Model.Episodes.PageIndex + 1)"
+                               class="btn btn-light @nextBtnDisabled">
+                                Next
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

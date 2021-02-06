@@ -1,0 +1,28 @@
+.genre {
+    margin-bottom: 5rem;
+}
+
+.movie-item-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0, 240px));
+    row-gap: 1rem;
+    column-gap: 1rem;
+
+    .movie-item {
+        height: 350px;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        &:hover {
+            transition-delay: 0.2s;
+            transform: scale(1.4) translateX(20px) translateY(-15px);
+            box-shadow: $box-shadow-bold;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+.movie-details {
+    // margin-top: 1rem;
+    padding: 1rem 0;
+
+    .movie-details-container {
+        background-color: $gray-light;
+        border-radius: 10px;
+        padding: 1.5rem;
+
+        .header {
+            display: grid;
+            justify-items: center;
+            column-gap: 1.5rem;
+            row-gap: 1.8rem;
+
+            .movie-thumb {
+                width: 240px;
+                height: 350px;
+                border-radius: 10px;
+                box-shadow: $box-shadow;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+        }
+
+        .episodes {
+            margin-top: 2.5rem;
+
+            .episode {
+                background-color: $dark;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                margin-top: 0.7rem;
+
+                .number {
+                    flex-shrink: 0;
+                    background-color: $gray-light;
+                    margin-right: 1rem;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    font-size: 1.25rem;
+                    font-weight: bolder;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $app-threshold-mobile) {
+    .movie-details {
+        .movie-details-container {
+            .header {
+                grid-template-columns: auto 1fr;
+            }
+        }
+    }
+}
+
+@media (min-width: $app-threshold-tablet) {
+    .movie-details {
+        .movie-details-container {
+            .header {
+                .movie-info {
+                    .description {
+                        font-size: 1.25rem;
+                    }
+
+                    .genre {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+    }
+}

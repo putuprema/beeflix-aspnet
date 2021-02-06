@@ -1,0 +1,33 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+
+@import "home.scss";
+@import "movie-details.scss";
+@import "rating-bar.scss";
+@import "movie-details.scss";
+@import "genre-item.scss";
+@import "movies-by-genre.scss";
+
+body {
+    background-color: $dark;
+    color: white;
+}
+
+.BeeFlix__container {
+    padding: 2rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.BeeFlix__fullpage {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

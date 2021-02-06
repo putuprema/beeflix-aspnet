@@ -1,0 +1,28 @@
+﻿@model BeeFlix.Models.Genre
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="movies-by-genre-section">
+    <div class="hero">
+        <img src="/img/hero.jpg" class="hero-img" alt="BeeFlix" width="100%">
+        <div class="hero-img-overlay"></div>
+        <div class="header">
+            <h1 class="genre-name"><strong>@Html.DisplayFor(model => model.Name)</strong></h1>
+            <a role="button" class="btn btn-secondary mt-2" asp-action="Index">View All Movies</a>
+        </div>
+    </div>
+    <div class="BeeFlix__container">
+        <div class="movie-item-container">
+            @foreach (var movie in Model.Movies)
+            {
+                <a asp-action="Details" asp-route-id="@movie.Id">
+                    <div class="movie-item" title="@movie.Title">
+                        <img src="@movie.Photo" alt="@movie.Title" height="100%" />
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
